@@ -12,6 +12,8 @@ jobs:
         include:
           - directory: gitpod
             name: node-18
+          - directory: gitpod
+            name: node-18-cypress
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
