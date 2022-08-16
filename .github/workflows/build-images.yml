@@ -7,6 +7,11 @@ on:
 
 jobs:
   docker:
+    strategy:
+      matrix:
+        include:
+          - directory: gitpod
+            name: node-18
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -22,6 +27,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/gitpod-node-18:latest
-          file: gitpod/node-18.Dockerfile
-          build-args: GITPOD_BASE_IMAGE=gitpod/workspace-full
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.directory }}-${{ matrix.name }}:latest
+          file: ${{ matrix.directory }}/${{ matrix.name }}.Dockerfile

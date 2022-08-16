@@ -1,6 +1,5 @@
 # See: https://hub.docker.com/r/gitpod/workspace-full/tags
-ARG GITPOD_BASE_IMAGE=gitpod/workspace-full:latest
-FROM $GITPOD_BASE_IMAGE
+FROM gitpod/workspace-full:2022-08-13-08-17-48
 
 # Set up Node 18 and enyable Node Corepack
 RUN bash -c 'VERSION="18" \
