@@ -1,5 +1,5 @@
 # See: https://hub.docker.com/r/gitpod/workspace-full/tags
-FROM gitpod/workspace-full:2022-08-13-08-17-48
+FROM gitpod/workspace-full:2022-08-26-10-53-43
 
 # Set up Node 18 and enyable Node Corepack
 RUN bash -c 'VERSION="18" \
