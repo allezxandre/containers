@@ -1,5 +1,5 @@
 # See: https://hub.docker.com/r/gitpod/workspace-full-vnc/tags
-FROM gitpod/workspace-full-vnc:2022-09-03-08-31-56
+FROM gitpod/workspace-full-vnc:2022-10-02-19-08-52
 
 # Set up Node 18 and enyable Node Corepack
 RUN bash -c 'VERSION="18" \
