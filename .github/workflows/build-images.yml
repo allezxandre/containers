@@ -37,9 +37,9 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value={{date 'YYYY-MM-DD'}}
           labels: |
-            org.opencontainers.image.title="${{ matrix.image-name }}"
-            org.opencontainers.image.description=""
-            org.opencontainers.image.authors="alexandre@jouandin.eu"
+            org.opencontainers.image.title=${{ matrix.image-name }}
+            org.opencontainers.image.description=
+            org.opencontainers.image.authors=alexandre@jouandin.eu
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
