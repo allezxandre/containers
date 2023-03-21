@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - "main"
+  # Schedule a build before the cache expires (7 days)
+  schedule:
+    - cron: "0 10 */6 * *" # Every 6 days at 10:00 UTC
 
 # Only run one workflow at a time per branch
 concurrency:
@@ -32,7 +35,7 @@ jobs:
           tags: |
             type=sha
             type=raw,value=latest,enable={{is_default_branch}}
-            type=raw,value={{date 'YYYYMMDD-HHmmss'}}
+            type=raw,value={{date 'YYYY-MM-DD'}}
           labels: |
             org.opencontainers.image.title="${{ matrix.image-name }}"
             org.opencontainers.image.description=""
