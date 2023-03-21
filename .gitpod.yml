@@ -1,8 +1,0 @@
-vscode:
-  extensions:
-    - eamodio.gitlens
-    - GitHub.vscode-pull-request-github
-    - mhutchie.git-graph
-    - ms-azuretools.vscode-docker
-    - redhat.vscode-yaml
-    - streetsidesoftware.code-spell-checker
