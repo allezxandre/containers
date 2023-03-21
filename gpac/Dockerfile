@@ -1,5 +1,6 @@
 FROM ubuntu:22.04
 
+# These labels will be overridden by GitHub Actions
 LABEL org.opencontainers.image.title="gpac"
 LABEL org.opencontainers.image.description="Ubuntu LTS with a full gpac install"
 LABEL org.opencontainers.image.authors="alexandre@jouandin.eu"
