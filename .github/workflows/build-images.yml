@@ -12,16 +12,19 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  first-party:
+  docker-build-push:
+    name: Build and push images
+    timeout-minutes: 90
     strategy:
       matrix:
         include:
           - image-name: gpac
-            dockerfile: gpac/Dockerfile
+            platforms: linux/amd64,linux/arm64
+          - image-name: anacrolix-confluence
             platforms: linux/amd64,linux/arm64
     runs-on: ubuntu-latest
     steps:
-      - name: Docker meta
+      - name: Prepare image metadata
         id: meta
         uses: docker/metadata-action@v4
         with:
@@ -46,26 +49,5 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: ${{ matrix.platforms }}
-          file: ${{ matrix.dockerfile }}
-  third-party:
-    strategy:
-      matrix:
-        include:
-          - directory: anacrolix-confluence
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.directory }}:latest
-          context: "{{defaultContext}}:3rd-party/${{ matrix.directory }}"
+          file: ${{ matrix.image-name }}/Dockerfile
+          context: "{{defaultContext}}:${{ matrix.image-name }}"
