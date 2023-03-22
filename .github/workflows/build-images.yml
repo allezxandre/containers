@@ -17,7 +17,7 @@ concurrency:
 jobs:
   docker-build-push:
     name: Build and push images
-    timeout-minutes: 90
+    timeout-minutes: 120
     strategy:
       matrix:
         include:
