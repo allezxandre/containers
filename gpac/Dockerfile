@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM debian:bullseye-slim AS base
+FROM ubuntu:22.04 AS base
 
 # Install dependencies for building and running GPAC
 # The following packages will be included in both the builder and the final image.
@@ -16,7 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     libfreetype6-dev \
     libgl1-mesa-dev \
     libjack-dev \
-    libjpeg62-turbo-dev \
+    libjpeg62-dev \
     libmad0-dev \
     libogg-dev \
     libpng-dev \
@@ -40,7 +40,7 @@ FROM base AS builder
 RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
 # Install dependencies for building and packaging GPAC
 # The following packages will only be included in the builder image.
-RUN --mount=type=cache,target=/var/cache/apt,sharing=locked\
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     DEBIAN_FRONTEND=noninteractive apt update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -65,7 +65,7 @@ RUN ./build_all.sh linux
 # Build GPAC and create a deb package
 WORKDIR /build/gpac_public
 RUN ./configure
-RUN make
+RUN echo 10 > debian/compat
 RUN make deb
 
 # Create a new image with only the built packages and the runtime dependencies
