@@ -17,7 +17,6 @@ concurrency:
 jobs:
   docker-build-push:
     name: Build and push images
-    timeout-minutes: 120
     strategy:
       matrix:
         include:
@@ -55,6 +54,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v4
+        timeout-minutes: 120
         with:
           push: true
           pull: true # Provides additional cache
