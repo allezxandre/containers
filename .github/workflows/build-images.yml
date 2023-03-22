@@ -60,3 +60,4 @@ jobs:
           context: "{{defaultContext}}:${{ matrix.image-name }}"
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          provenance: true # Store data like the Dockerfile in the image
