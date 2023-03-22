@@ -22,8 +22,12 @@ jobs:
       matrix:
         include:
           - image-name: gpac
+            title: GPAC
+            description: Debian-stable based image with GPAC and its dependencies installed
             platforms: linux/amd64,linux/arm64
           - image-name: anacrolix-confluence
+            title: Anacrolix Confluence
+            description: Debian-Bullseye based image with @Anacrolix/Confluence installed
             platforms: linux/amd64,linux/arm64
     runs-on: ubuntu-latest
     steps:
@@ -37,8 +41,8 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value={{date 'YYYY-MM-DD'}}
           labels: |
-            org.opencontainers.image.title=${{ matrix.image-name }}
-            org.opencontainers.image.description=
+            org.opencontainers.image.title=${{ matrix.title }}
+            org.opencontainers.image.description=${{ matrix.description }}
             org.opencontainers.image.authors=alexandre@jouandin.eu
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
