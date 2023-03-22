@@ -53,6 +53,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
+          pull: true # Provides additional cache
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: ${{ matrix.platforms }}
