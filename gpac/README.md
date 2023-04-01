@@ -1,6 +1,6 @@
 # GPAC
 
-![https://hub.docker.com/r/allezxandre/gpac](https://img.shields.io/badge/DockerHub-allezxandre%2Fgpac-blue)
+[![DockerHub Link](https://img.shields.io/badge/DockerHub-allezxandre%2Fgpac-blue)](https://hub.docker.com/r/allezxandre/gpac)
 
 Builds a docker image with [GPAC](https://gpac.wp.imt.fr/).
 
