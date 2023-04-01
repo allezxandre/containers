@@ -23,7 +23,7 @@ jobs:
           - image-name: gpac
             title: GPAC
             description: Debian-stable based image with GPAC and its dependencies installed
-            platforms: linux/amd64,linux/arm64
+            platforms: linux/amd64
           - image-name: anacrolix-confluence
             title: Anacrolix Confluence
             description: Debian-Bullseye based image with @Anacrolix/Confluence installed
