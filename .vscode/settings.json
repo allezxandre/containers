@@ -1,5 +1,8 @@
 {
-    "cSpell.enableFiletypes": [
-        "dockerfile"
-    ]
+	"cSpell.enableFiletypes": [
+		"dockerfile"
+	],
+	"cSpell.words": [
+		"gpac"
+	]
 }
