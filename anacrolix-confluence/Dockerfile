@@ -1,8 +1,8 @@
-FROM golang:bullseye as go-build
+FROM golang:bookworm AS go-build
 RUN go install github.com/anacrolix/confluence@latest
 RUN cp $GOPATH/bin/confluence /usr/local/bin/
 
-FROM debian:bullseye
+FROM debian:bookworm
 
 # These labels will be overridden by GitHub Actions
 LABEL org.opencontainers.image.title="anacrolix-confluence"
